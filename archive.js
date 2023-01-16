@@ -16,9 +16,9 @@ const displaySingleBooks = books => {
          console.log(book);
         const div = document.createElement('div');
         div.innerHTML = `
-        <p>Book Name: ${book.title}</p>
-        <p>Author Name: ${book.author_name}</p>
-        <p>First Publist Date: ${book.first_publish_year}</p>
+        <p><span class="fw-bold text-primary">Book Name:</span> <span class="fw-semibold">${book.title}</span></p>
+        <p><span class="fw-bold text-primary">Author Name:</span> <span class="fw-semibold">${book.author_name}</span></p>
+        <p><span class="fw-bold text-primary">First Publist Date:</span> <span class="fw-semibold">${book.first_publish_year}</span></p>
         `
         bookContainer.appendChild(div);
        
