@@ -18,10 +18,10 @@ const displaySingleBooks = books => {
     // let cover_i;
     const bookContainer = document.getElementById('book-archive');
     bookContainer.textContent = '';
-     if (!books) {
+     if (books.length===0) {
         const div = document.createElement('div');
         div.innerHTML = `
-        <h2 class="fw-bold text-primary">Sorry! Book Not Found</h2>
+        <h3 class="fw-bold text-primary">Sorry! Book Not Found</h3>
         `
         bookContainer.appendChild(div); 
     }

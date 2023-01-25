@@ -18,8 +18,22 @@
     <div id="search" class="input-group mb-3 mt-5 w-50 ">
         <input id="search-field" type="text" class="form-control" placeholder="Search Book" aria-label="Recipient's username"
             aria-describedby="button-addon2">
-        <button onclick="searchBook()" class="btn btn-outline-secondary btn-primary text-light fw-bold fs-5" type="button" id="button-addon2">Search</button>
+        <button onclick="searchBook()" class="btn btn-outline-secondary btn-primary text-light fw-bold fs-5" type="button" id="button-addon2">Search</button>   
+         
     </div>
+    <div id="spinner" class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"  role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div id="result-show-btn">
+        <div id="result-show-btn" class="d-flex justify-content-center">
+        <div class="d-grid gap-2 w-50">
+            <button class="btn btn-primary fw-bold fs-6" type="button">Showing results out of</button>
+        </div>
+    </div>
+    </div>
+    
     <!-- search box and button end -->
 <div id="container" class="">
     <div class="row row-cols-3 justify-content-center" id="book-archive">

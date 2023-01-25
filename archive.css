@@ -1,6 +1,9 @@
 #search{
     margin: 0 auto;
 }
+#result-show-btn{
+    display: none;
+}
 #container{
     margin: 120px 250px 0 250px;
 }
