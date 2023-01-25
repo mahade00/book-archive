@@ -2,5 +2,8 @@
     margin: 0 auto;
 }
 #container{
-    margin: 0 auto;
+    margin: 120px 250px 0 250px;
+}
+.cards{
+    padding-bottom: 30px;
 }
