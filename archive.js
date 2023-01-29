@@ -18,26 +18,35 @@ const bookSearchText = searchText => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch (url)
     .then(res => res.json())
-    .then(data=>displaySingleBooks(data.docs))
+        .then(data => displaySingleBooks(data.docs))
+    
 }
+
 
 const displaySingleBooks = books => {
     // console.log(books);
     const bookCount = books.length;
+    // const numfound = books.numFound;
+    // console.log(books);
    
     const bookSlicer = books.slice(0, 30);
     const bookSlicerLength = bookSlicer.length;
-    console.log(bookSlicer);
-    console.log(bookSlicerLength);
+    // console.log(bookSlicer);
+    // console.log(bookSlicerLength);
+
     const bookContainer = document.getElementById('book-archive');
     bookContainer.textContent = '';
     // bookContainer.innerHTML = `${bookSlicer}`;
      if (books.length===0) {
-        const div = document.createElement('div');
-        div.innerHTML = `
-        <h3 class="fw-bold text-primary">Sorry! Book Not Found</h3>
-        `
-        bookContainer.appendChild(div); 
+         const resultShowButton = document.getElementById('result-show-btn');
+         resultShowButton.innerHTML = `
+         <div  class="d-flex justify-content-center">
+            <div class="d-grid gap-2 w-50">
+                <button class="btn btn-primary fw-bold fs-6" type="button">No result found </button>
+            </div>
+        </div>
+         `
+         
     }
     else if (books.length > 0){
          const resultShowButton = document.getElementById('result-show-btn');
@@ -50,14 +59,19 @@ const displaySingleBooks = books => {
          `
          
     }
-    books.forEach(book=> {
-        console.log(book);
-        const imgURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+    bookSlicer.forEach(book=> {
+        // console.log(bookSlicer);
+       
+        let bookCoverImg,cover_i;
+        const imgURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;     
+        (book.cover_i === undefined) ? bookCoverImg = "/images/no_image.jpg" : bookCoverImg = `${imgURL}`;
+
+
         const div = document.createElement('div');
         div.classList.add('cards') ;
         div.innerHTML = `
     <div class="card h-100 " style="width: 18rem;">
-        <img src="${imgURL}" class="card-img-top" alt="...">
+        <img src="${bookCoverImg}" class="card-img-top" alt="...">
         <div class="card-body">
              <p><span class="fw-bold text-primary">Book Name:</span> <span class="fw-semibold">${book.title?book.title:'None'}</span></p>
 
@@ -73,5 +87,5 @@ const displaySingleBooks = books => {
     toogleSearchResult('inline-flex');
 }
 
-bookSearchText('cse');
+// bookSearchText('cse');
 
