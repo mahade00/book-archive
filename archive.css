@@ -4,18 +4,22 @@
 #spinner{
     display: none;
 }
-/* #book-archive{
-    display: inline-flex;
-} */
-/* #result-show-btn{
-    display: none;
-} */
+
 #container{
     margin: 120px 250px 0 250px;
 }
 .cards{
     padding-bottom: 30px;
 }
-/* .card-body{
-    padding-top: 15px;
-} */
+
+@media screen and (max-width: 540px){
+    #container {
+            margin: 120px 250px 0 97px;
+        }
+}
+
+@media screen and(max-width:882px) {
+#container {
+        margin: 120px 108px 0 106px;
+    }
+}

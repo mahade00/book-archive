@@ -29,18 +29,17 @@ const bookSearchText = searchText => {
 
 
 const displaySingleBooks = books => {
-    // console.log(books);
+   
     const bookCount = books.numFound;
     console.log(bookCount);
    
     const bookSlicer = books.docs.slice(0, 30);
     const bookSlicerLength = bookSlicer.length;
-    // console.log(bookSlicer);
-    // console.log(bookSlicerLength);
+   
 
     const bookContainer = document.getElementById('book-archive');
     bookContainer.textContent = '';
-    // bookContainer.innerHTML = `${bookSlicer}`;
+    
      if (books.docs.length===0) {
          const resultShowButton = document.getElementById('result-show-btn');
 
@@ -54,7 +53,6 @@ const displaySingleBooks = books => {
     }
     else if (books.docs.length > 0){
          const resultShowButton = document.getElementById('result-show-btn');
-        
          resultShowButton.innerHTML = `
          <div  class="d-flex justify-content-center">
             <div class="d-grid gap-2 w-50">
@@ -64,8 +62,7 @@ const displaySingleBooks = books => {
         `  
     }
     bookSlicer.forEach(book=> {
-        // console.log(bookSlicer);
-       
+
         let bookCoverImg,cover_i;
         const imgURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;     
         (book.cover_i === undefined) ? bookCoverImg = "/images/no_image.jpg" : bookCoverImg = `${imgURL}`;
