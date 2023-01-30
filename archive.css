@@ -12,13 +12,13 @@
     padding-bottom: 30px;
 }
 
-@media screen and (max-width: 540px){
+@media screen and (max-width: 375px){
     #container {
             margin: 120px 250px 0 97px;
         }
 }
 
-@media screen and(max-width:882px) {
+@media screen and(max-width:768px) {
 #container {
         margin: 120px 108px 0 106px;
     }
