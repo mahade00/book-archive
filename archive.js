@@ -1,14 +1,20 @@
 const toogleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
 }
+
 const toogleSearchResult = displayStyle => {
     document.getElementById('book-archive').style.display = displayStyle;
+}
+
+const toogleResultShowBtn = displayStyle => {
+    document.getElementById('result-show-btn').style.display = displayStyle;
 }
 
 const searchBook = () => {
     const serchText = document.getElementById('search-field').value;
     toogleSpinner('block');
-    toogleSearchResult('none')
+    toogleResultShowBtn('none');
+    toogleSearchResult('none');
     bookSearchText(serchText);
     document.getElementById('search-field').value = '';
 
@@ -18,18 +24,16 @@ const bookSearchText = searchText => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch (url)
     .then(res => res.json())
-        .then(data => displaySingleBooks(data.docs))
-    
+     .then(data => displaySingleBooks(data))
 }
 
 
 const displaySingleBooks = books => {
     // console.log(books);
-    const bookCount = books.length;
-    // const numfound = books.numFound;
-    // console.log(books);
+    const bookCount = books.numFound;
+    console.log(bookCount);
    
-    const bookSlicer = books.slice(0, 30);
+    const bookSlicer = books.docs.slice(0, 30);
     const bookSlicerLength = bookSlicer.length;
     // console.log(bookSlicer);
     // console.log(bookSlicerLength);
@@ -37,27 +41,27 @@ const displaySingleBooks = books => {
     const bookContainer = document.getElementById('book-archive');
     bookContainer.textContent = '';
     // bookContainer.innerHTML = `${bookSlicer}`;
-     if (books.length===0) {
+     if (books.docs.length===0) {
          const resultShowButton = document.getElementById('result-show-btn');
+
          resultShowButton.innerHTML = `
          <div  class="d-flex justify-content-center">
             <div class="d-grid gap-2 w-50">
                 <button class="btn btn-primary fw-bold fs-6" type="button">No result found </button>
             </div>
         </div>
-         `
-         
+         `         
     }
-    else if (books.length > 0){
+    else if (books.docs.length > 0){
          const resultShowButton = document.getElementById('result-show-btn');
+        
          resultShowButton.innerHTML = `
          <div  class="d-flex justify-content-center">
             <div class="d-grid gap-2 w-50">
-                <button class="btn btn-primary fw-bold fs-6" type="button">Showing results ${bookSlicerLength} out of ${bookCount} </button>
+                <button class="btn btn-primary fw-bold fs-6" type="button">Showing results ${bookSlicerLength} out of ${bookCount} for ${books.q}</button>
             </div>
         </div>
-         `
-         
+        `  
     }
     bookSlicer.forEach(book=> {
         // console.log(bookSlicer);
@@ -83,7 +87,8 @@ const displaySingleBooks = books => {
         `
         bookContainer.appendChild(div)
     })  
-     toogleSpinner('none');
+    toogleSpinner('none');
+    toogleResultShowBtn('block');
     toogleSearchResult('inline-flex');
 }
 
