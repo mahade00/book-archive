@@ -79,9 +79,9 @@ const displaySingleBooks = books => {
         <div class="card-body">
              <p><span class="fw-bold text-primary">Book Name:</span> <span class="fw-semibold">${book.title?book.title:'None'}</span></p>
 
-             <p><span class="fw-bold text-primary">Author Name:</span> <span class="fw-semibold">${book.author_name[0] ? book.author_name[0] : 'None'}</span></p>
+             <p><span class="fw-bold text-primary">Author Name:</span> <span class="fw-semibold">${book.author_name ? book.author_name : 'None'}</span></p>
              
-             <p><span class="fw-bold text-primary"> Publisher :</span> <span class="fw-semibold">${book.publisher[0]?book.publisher[0]:'None'}</span></p>
+             <p><span class="fw-bold text-primary"> Publisher :</span> <span class="fw-semibold">${book.publisher?book.publisher:'None'}</span></p>
 
             <p><span class="fw-bold text-primary">First Publish Year:</span> <span class="fw-semibold">${book.first_publish_year?book.first_publish_year:'None'}</span></p>
         </div>
