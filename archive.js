@@ -10,6 +10,7 @@ const toogleResultShowBtn = displayStyle => {
     document.getElementById('result-show-btn').style.display = displayStyle;
 }
 
+// function for search button
 const searchBook = () => {
     const serchText = document.getElementById('search-field').value;
     toogleSpinner('block');
@@ -20,6 +21,7 @@ const searchBook = () => {
 
 }
 
+// featch API
 const bookSearchText = searchText => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch (url)
@@ -27,30 +29,25 @@ const bookSearchText = searchText => {
      .then(data => displaySingleBooks(data))
 }
 
-
-const displaySingleBooks = books => {
-   
-    const bookCount = books.numFound;
-    console.log(bookCount);
-   
+const displaySingleBooks = books => {   
+    const bookCount = books.numFound;   
     const bookSlicer = books.docs.slice(0, 30);
-    const bookSlicerLength = bookSlicer.length;
-   
+    const bookSlicerLength = bookSlicer.length;   
 
     const bookContainer = document.getElementById('book-archive');
     bookContainer.textContent = '';
-    
+
+    // check length and condition
      if (books.docs.length===0) {
          const resultShowButton = document.getElementById('result-show-btn');
-
          resultShowButton.innerHTML = `
          <div  class="d-flex justify-content-center">
             <div class="d-grid gap-2 w-50">
                 <button class="btn btn-primary fw-bold fs-6" type="button">No result found </button>
             </div>
         </div>
-         `         
-    }
+         `
+     }
     else if (books.docs.length > 0){
          const resultShowButton = document.getElementById('result-show-btn');
          resultShowButton.innerHTML = `
@@ -61,11 +58,14 @@ const displaySingleBooks = books => {
         </div>
         `  
     }
+
+    // for each loop
     bookSlicer.forEach(book=> {
 
-        let bookCoverImg,cover_i;
-        const imgURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;     
-        (book.cover_i === undefined) ? bookCoverImg = "/images/no_image.jpg" : bookCoverImg = `${imgURL}`;
+        let bookCoverImg,cover_i; // for image
+        const imgURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        // use ternary operator
+        (book.cover_i === undefined) ? bookCoverImg = "/images/no_image.jpg" : bookCoverImg = `${imgURL}`; 
 
 
         const div = document.createElement('div');
@@ -89,5 +89,4 @@ const displaySingleBooks = books => {
     toogleSearchResult('inline-flex');
 }
 
-// bookSearchText('cse');
 
