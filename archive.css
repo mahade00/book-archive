@@ -1,3 +1,6 @@
+.heading{
+    margin-top: 25px;
+}
 #search{
     margin: 0 auto;
 }
@@ -12,14 +15,21 @@
     padding-bottom: 30px;
 }
 
-@media screen and (max-width: 500px)  {
+
+@media screen and (max-width:375px) {
+#container{
+     margin:  120px 61px 0 42px;
+    }
+}
+
+@media screen and (max-width: 500px) and (min-width:374px) {
     #container {
-            margin: 120px 73px 0 104px;;
+            margin: 120px 73px 0 42px;
         }
 }
 
-@media screen and(max-width:768px) {
+@media screen and(max-width:990px) {
 #container {
-        margin: 120px 21px 0 73px;
+        margin: 120px 135px 0 215px;
     }
 }
