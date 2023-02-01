@@ -16,6 +16,7 @@
 }
 
 
+/* mobile friendly start */
 @media screen and (max-width:375px) {
 #container{
      margin:  120px 61px 0 42px;
@@ -33,3 +34,4 @@
         margin: 120px 135px 0 215px;
     }
 }
+/* mobile friendly end  */
